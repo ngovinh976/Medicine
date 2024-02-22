@@ -1,0 +1,1010 @@
+{
+	"info": {
+		"_postman_id": "f9015012-a83d-4cb7-bf3f-fc440c66585d",
+		"name": "CenterID",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczOTMzNzg3LCJleHAiOjE2NzM5MzczODcsImlhdCI6MTY3MzkzMzc4N30.K0fXjQ2bxQhDSzjuqiq3J78V3vgyKNLebnQNvAf4bsM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"phoneNumber\": \"0999999999\",\r\n//   \"password\": \"Admin123!\"\r\n// }\r\n{\r\n  \"phoneNumber\": \"03555666897\",\r\n  \"password\": \"Test123!\"\r\n}\r\n// {\r\n//   \"phoneNumber\": \"03555666880\",\r\n//   \"password\": \"Test123!\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Information",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMzFlM2I2NDQtNjliNi00N2M3LTllMWUtYzhlYTg2Y2YwZjI5Iiwicm9sZSI6IkFETUlOIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczOTMzODA3LCJleHAiOjE2NzM5Mzc0MDcsImlhdCI6MTY3MzkzMzgwN30.YuIBk6bGAF813GyAzRvaYvPqPhRIqt6X0l7kB-eCpIY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user?queries=ID, PHONENUMBER,FULLNAME,EMAIL,PROVINCEID,ADDRESS,ROLEID,CREATEDAT, CREATEDBYID, UPDATEDAT,UPDATEDBYID,ISACTIVE, NOTE, ACCOUNTTYPEID, COMPANYID,DISTRICTID,WARDID,STREET, GENDER, BIRTHDAY,IDENTITYNUMBER,IMAGE,UserEkyc.NAME as EkycName, COMPANY.ADDRESS as CompanyAddress",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "queries",
+									"value": "ID, PHONENUMBER,FULLNAME,EMAIL,PROVINCEID,ADDRESS,ROLEID,CREATEDAT, CREATEDBYID, UPDATEDAT,UPDATEDBYID,ISACTIVE, NOTE, ACCOUNTTYPEID, COMPANYID,DISTRICTID,WARDID,STREET, GENDER, BIRTHDAY,IDENTITYNUMBER,IMAGE,UserEkyc.NAME as EkycName, COMPANY.ADDRESS as CompanyAddress"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYjBmNTdjOTYtMmFlYy00MDIyLTk3N2MtMThiMzRlY2ZiZmY3Iiwicm9sZSI6IlVTRVIiLCJuYW1laWQiOiI1YThlNjQyNy00ZDFkLTQ4M2UtOTgzYS0zZDUyYTI2MTM0NTQiLCJuYmYiOjE2NzM4ODI2NDgsImV4cCI6MTY3Mzg4NjI0OCwiaWF0IjoxNjczODgyNjQ4fQ.8jUoUckKghuG3ekkndn2EK7_6tFWWxxUffgHWtWGUsU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Properties\": [\r\n        {\r\n            \"Property\":\"UserEkyc.NAME\",\r\n            \"Value\":\"Công Ty TNHH Test\"\r\n        },\r\n        {\r\n            \"Property\":\"UserEkyc.IdentityCard\",\r\n            \"Value\":\"1234567\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list User Paging",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMzFlM2I2NDQtNjliNi00N2M3LTllMWUtYzhlYTg2Y2YwZjI5Iiwicm9sZSI6IkFETUlOIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjQ1OTgwLCJleHAiOjE2NzMyNDk1ODAsImlhdCI6MTY3MzI0NTk4MH0.mtA1S6MKstbe67qNzXYhYFR6HQsLHA6Wa_1TkivGl8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pageNumber\": 1,\r\n  \"pageSize\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/get-list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"get-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Phone",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjc1ODc3MTY3LCJleHAiOjE2NzU4ODA3NjcsImlhdCI6MTY3NTg3NzE2N30.CLS9jio-F_Ajj-aSw1Bx12kWgYa6WkZ2Gr1cdXsamjg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/validate-phone?phone=03555666880",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"validate-phone"
+							],
+							"query": [
+								{
+									"key": "phone",
+									"value": "03555666880"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"5a8e6427-4d1d-483e-983a-3d52a2613454\",\"password\":\"Application123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/application",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"application"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Authenticate Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"5a8e6427-4d1d-483e-983a-3d52a2613454\",\"password\":\"Application123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/application",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list AccountType",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczOTMzNzg3LCJleHAiOjE2NzM5MzczODcsImlhdCI6MTY3MzkzMzc4N30.K0fXjQ2bxQhDSzjuqiq3J78V3vgyKNLebnQNvAf4bsM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/account-type",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjc1NDE1NTgxLCJleHAiOjE2NzU0MTkxODEsImlhdCI6MTY3NTQxNTU4MX0.lX7FzCLr3nLJ5psvqPtIMNKlCJrJDQBJFlf08ROcqyU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phoneNumber\": \"03555666813\",\r\n  \"password\": \"Test123!\",\r\n  \"accountTypeId\": \"07a14c25-4a6b-401d-8d25-406daffce9a1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Phonenumber",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjcxMTc4MTgwLCJleHAiOjE2NzExODE3ODAsImlhdCI6MTY3MTE3ODE4MH0.YUqqCiDYqd_aw_Y7ZJqJp37Ao-AcNXYrNdWpXYsU0NI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"PhoneNumber\":\"03555666897\",\r\n    \"OTP\":\"813193\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/verify-phone-number",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"verify-phone-number"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Forgot Password",
+			"item": [
+				{
+					"name": "Authenticate Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"5a8e6427-4d1d-483e-983a-3d52a2613454\",\"password\":\"Application123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/application",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczOTM1MDE3LCJleHAiOjE2NzM5Mzg2MTcsImlhdCI6MTY3MzkzNTAxN30.wq9OHyMn79E_K6dlkRVuA1lMvcvmx3TUDvMtmK1wnSA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phoneNumber\": \"0972705703\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/forgot-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczODg1NDE2LCJleHAiOjE2NzM4ODkwMTYsImlhdCI6MTY3Mzg4NTQxNn0.06IgYE5UXsVfoHA89kzPbPb3TOQWxKuY855SgBD20mY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phoneNumber\": \"0972705703\",\r\n  \"OTP\":\"064742\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/reset-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjcxMTg0OTAxLCJleHAiOjE2NzExODg1MDEsImlhdCI6MTY3MTE4NDkwMX0.x4Hvo8iDdrR_WygPnvuFVLjKOjo9_AAcLY1bQKoow44",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phoneNumber\": \"03555666880\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/resend-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"resend-otp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ward",
+			"item": [
+				{
+					"name": "Authenticate Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"5a8e6427-4d1d-483e-983a-3d52a2613454\",\"password\":\"Application123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/application",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Ward",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjcxMTgzMTg0LCJleHAiOjE2NzExODY3ODQsImlhdCI6MTY3MTE4MzE4NH0._sDoQESHHEf5rsyZyJMChrK4CesATYcZHUJGYyFIwGk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ward",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ward"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list Ward By District Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjMzMzM2LCJleHAiOjE2NzMyMzY5MzYsImlhdCI6MTY3MzIzMzMzNn0.BL0h5SGigMOHl57pj6TQfz8zoBFcsM90uK9_8E-Nhzo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ward/district/21e790b6-71fd-4191-b94c-8672f67318dd",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ward",
+								"district",
+								"21e790b6-71fd-4191-b94c-8672f67318dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ward By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjMzMzM2LCJleHAiOjE2NzMyMzY5MzYsImlhdCI6MTY3MzIzMzMzNn0.BL0h5SGigMOHl57pj6TQfz8zoBFcsM90uK9_8E-Nhzo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ward/005090c7-cf7e-44fb-8b4f-0b34fbfc277b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ward",
+								"005090c7-cf7e-44fb-8b4f-0b34fbfc277b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "District",
+			"item": [
+				{
+					"name": "Authenticate Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"5a8e6427-4d1d-483e-983a-3d52a2613454\",\"password\":\"Application123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/application",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all District",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjM2NDA0LCJleHAiOjE2NzMyNDAwMDQsImlhdCI6MTY3MzIzNjQwNH0.FHhV3fg7-hsvUer3JnPgyCuysdgw7Pht6mRbDX0Ypak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/district",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"district"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list District By Province Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjM2NDA0LCJleHAiOjE2NzMyNDAwMDQsImlhdCI6MTY3MzIzNjQwNH0.FHhV3fg7-hsvUer3JnPgyCuysdgw7Pht6mRbDX0Ypak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/district/province/0a0402bd-580d-4ae8-bbb6-3cb17585c9aa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"district",
+								"province",
+								"0a0402bd-580d-4ae8-bbb6-3cb17585c9aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get District By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjMzMzM2LCJleHAiOjE2NzMyMzY5MzYsImlhdCI6MTY3MzIzMzMzNn0.BL0h5SGigMOHl57pj6TQfz8zoBFcsM90uK9_8E-Nhzo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/district/1476ac87-7e87-4523-9c41-cfcbc0449568",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"district",
+								"1476ac87-7e87-4523-9c41-cfcbc0449568"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Province",
+			"item": [
+				{
+					"name": "Authenticate Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"5a8e6427-4d1d-483e-983a-3d52a2613454\",\"password\":\"Application123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/application",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Province",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjM2NDA0LCJleHAiOjE2NzMyNDAwMDQsImlhdCI6MTY3MzIzNjQwNH0.FHhV3fg7-hsvUer3JnPgyCuysdgw7Pht6mRbDX0Ypak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/province",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"province"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Province By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczMjMzMzM2LCJleHAiOjE2NzMyMzY5MzYsImlhdCI6MTY3MzIzMzMzNn0.BL0h5SGigMOHl57pj6TQfz8zoBFcsM90uK9_8E-Nhzo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/province/042c13b7-b393-4c98-9df3-599c1c96309d",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"province",
+								"042c13b7-b393-4c98-9df3-599c1c96309d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reset Password By User",
+			"item": [
+				{
+					"name": "Authenticate Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"5a8e6427-4d1d-483e-983a-3d52a2613454\",\"password\":\"Application123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/application",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjczOTM1MDE3LCJleHAiOjE2NzM5Mzg2MTcsImlhdCI6MTY3MzkzNTAxN30.wq9OHyMn79E_K6dlkRVuA1lMvcvmx3TUDvMtmK1wnSA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phoneNumber\": \"03555666880\",\r\n  \"password\": \"?w@Ax5N1qN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMjE4ZTBjYWMtOGNjNy00Nzk4LTg3NzItOGVhMWY2ZmIwMWQ5Iiwicm9sZSI6IlVTRVIiLCJuYW1laWQiOiI1YThlNjQyNy00ZDFkLTQ4M2UtOTgzYS0zZDUyYTI2MTM0NTQiLCJuYmYiOjE2NzM5MzUxMjEsImV4cCI6MTY3MzkzODcyMSwiaWF0IjoxNjczOTM1MTIxfQ.uxOjq8uwlJ1LnpJZvUKBvLB8TmJkcuqcN3uH1e-1QGs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"currentPassword\": \"?w@Ax5N1qN\",\r\n  \"newPassword\":\"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/reset-password/218e0cac-8cc7-4798-8772-8ea1f6fb01d9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"reset-password",
+								"218e0cac-8cc7-4798-8772-8ea1f6fb01d9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sync User",
+			"item": [
+				{
+					"name": "Sync User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNjk2ZWM2MzUtYzVmNS00Mjg4LWI5MWQtMGYxMGY1N2I0YTg4Iiwicm9sZSI6IkFQUExJQ0FUSU9OIiwibmFtZWlkIjoiNWE4ZTY0MjctNGQxZC00ODNlLTk4M2EtM2Q1MmEyNjEzNDU0IiwibmJmIjoxNjc1NzQ5NTExLCJleHAiOjE2NzU3NTMxMTEsImlhdCI6MTY3NTc0OTUxMX0.vPFo4MXYgbWe5FPok9Iw4eMNt7BLViRdvOOY-21hPw8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"userName\": \"0987222112\",\r\n        \"createdAt\": \"2023-07-02 09:00:00\",\r\n        \"fullname\":\"asdasdsad\",\r\n        \"IsActive\": true,\r\n        \"PhoneNumberConfirmed\": true,\r\n        \"Email\":\"test@gmail.com\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/sync",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"sync"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"  pm.collectionVariables.set(\"baseUrl\", \"https://localhost:5001\");",
+					"// pm.collectionVariables.set(\"baseUrl\", \"http://112.78.3.26:5000\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": ""
+		}
+	]
+}
