@@ -34,7 +34,7 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -113,7 +113,7 @@ public class loginController extends HttpServlet {
                 session.setAttribute("pass", rs.getPassword());
                 session.setAttribute("IsAdmin", rs.getIsAdmin());
                 session.setAttribute("fullname", rs.getFullname());
-                 session.setAttribute("gender", rs.getGender());
+                session.setAttribute("gender", rs.getGender());
                 session.setAttribute("user", rs.getUsername());
                 Cookie cookieUsername = new Cookie("user", rs.getUsername());
                 cookieUsername.setMaxAge(60 * 60 * 24 * 3);
@@ -123,12 +123,13 @@ public class loginController extends HttpServlet {
                 cookieUsername.setMaxAge(60 * 60 * 24 * 3);
                 response.addCookie(cookieUsername);
                 response.addCookie(cookieFullname);
-
-//                if (rs.getIsAdmin() == "1") {
-//                    response.sendRedirect("/AdminController");
-//                } else {
-                    response.sendRedirect("/UserHomeController");
-//                }
+//
+                if (rs.getIsAdmin() == 1) {
+                    response.sendRedirect("/AdminController");
+                } else {
+                System.out.println(rs.getIsAdmin());
+                response.sendRedirect("/UserHomeController");
+                }
 
             }
         }
@@ -136,11 +137,10 @@ public class loginController extends HttpServlet {
 
     public static boolean checkAdmin(HttpSession session) {
         try {
-//              String user = (String) session.getAttribute("user");
-            if (session.getAttribute("IsAdmin").equals("admin")) {
+            if ("1".equals(session.getAttribute("IsAdmin").toString())) {
                 return true;
-            }
-            return false;
+            } else {
+            return false;}
         } catch (Exception e) {
             return false;
         }

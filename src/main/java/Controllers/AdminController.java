@@ -65,6 +65,7 @@ public class AdminController extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (checkAdmin(session)) {
+            System.out.println(checkAdmin(session));
             if (path.startsWith("/AdminController/Users/Delete")) {
                 String[] s = path.split("/");
                 try {
@@ -112,7 +113,8 @@ public class AdminController extends HttpServlet {
                 request.getRequestDispatcher("/admin-index.jsp").forward(request, response);
             }
         } else {
-            response.sendRedirect("/UserHomeController");
+            System.out.println(checkAdmin(session));
+//            response.sendRedirect("/UserHomeController");
         }
 
     }
