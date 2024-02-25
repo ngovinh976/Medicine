@@ -55,14 +55,14 @@ public class UserDAO {
         try {
             Statement st = conn.createStatement();
             String hasPassword = getMd5(password).toUpperCase();
-            PreparedStatement ps = conn.prepareStatement("SELECT *  FROM Accounts WHERE Username = ? Or Email = ? AND Password = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT *  FROM Accounts WHERE (Username = ? Or Email = ?) AND Password = ?");
             ps.setString(1, username);
             ps.setString(2, username);
             ps.setString(3, hasPassword);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 ac = new UserModel(rs.getInt("UserID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Fullname"), rs.getString("Email"), rs.getString("Phone"), rs.getString("ResetToken"), rs.getString("Address"), rs.getDate("Birthday"), rs.getInt("Gender"), rs.getInt("IsAdmin"), rs.getDate("CreatedAt"));
-           }
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,12 +111,13 @@ public class UserDAO {
         }
         return ac;
     }
-     public UserModel checkAccountEmail(String Email) {
+
+    public UserModel checkAccountEmail(String Email) {
         UserModel ac = null;
         try {
             Statement st = conn.createStatement();
 //            String hasPassword = getMd5(password).toUpperCase();
-            PreparedStatement ps = conn.prepareStatement("SELECT *  FROM Accounts WHERE Email = ?");       
+            PreparedStatement ps = conn.prepareStatement("SELECT *  FROM Accounts WHERE Email = ?");
             ps.setString(1, Email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -127,12 +128,13 @@ public class UserDAO {
         }
         return ac;
     }
-     public UserModel checkAccountPhone(String Phone) {
+
+    public UserModel checkAccountPhone(String Phone) {
         UserModel ac = null;
         try {
             Statement st = conn.createStatement();
 //            String hasPassword = getMd5(password).toUpperCase();
-            PreparedStatement ps = conn.prepareStatement("SELECT *  FROM Accounts WHERE Phone = ?");       
+            PreparedStatement ps = conn.prepareStatement("SELECT *  FROM Accounts WHERE Phone = ?");
             ps.setString(1, Phone);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -181,11 +183,11 @@ public class UserDAO {
     public UserModel getProfileByToken(String token) {
         UserModel kh = null;
         try {
-            PreparedStatement ps = conn.prepareStatement("select * from Users where ResetToken=?");
+            PreparedStatement ps = conn.prepareStatement("select * from Accounts where ResetToken=?");
             ps.setString(1, token);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-//                kh = new UserModel(rs.getString("Username"), rs.getString("Password"), rs.getString("Fullname"), rs.getString("Email"), rs.getString("Phone"), rs.getString("UserType"), rs.getString("Gender"), rs.getDate("Birthday"), rs.getString("Address"));
+                kh = new UserModel(rs.getInt("UserID"), rs.getString("Username"), rs.getString("Password"), rs.getString("Fullname"), rs.getString("Email"), rs.getString("Phone"), rs.getString("ResetToken"), rs.getString("Address"), rs.getDate("Birthday"), rs.getInt("Gender"), rs.getInt("IsAdmin"), rs.getDate("CreatedAt"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -233,7 +235,7 @@ public class UserDAO {
         int count = 0;
         try {
             String hasPassword = getMd5(Password).toUpperCase();
-            PreparedStatement ps = conn.prepareStatement("update Users set Password=? where Username=?");
+            PreparedStatement ps = conn.prepareStatement("update Accounts set Password=? where Username=?");
 //            ps.setString(1, newinfo.getUsername());
             ps.setString(1, hasPassword);
             ps.setString(2, Username);
@@ -250,7 +252,7 @@ public class UserDAO {
         int count = 0;
         try {
 
-            PreparedStatement ps = conn.prepareStatement("update Users set ResetToken=? where Email=?");
+            PreparedStatement ps = conn.prepareStatement("update Accounts set ResetToken=? where Email=?");
 //            ps.setString(1, newinfo.getUsername());
             ps.setString(2, email);
             ps.setString(1, token);

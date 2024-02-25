@@ -24,8 +24,8 @@ import javax.mail.internet.*;
  */
 public class ForgotController extends HttpServlet {
 
-    final String username = "0939165008hoang@gmail.com"; // Replace with your email
-    final String password = "jwwl clsp wspt lltj"; // Replace with your password
+    final String username = "bapvinh171@gmail.com"; // Replace with your email
+    final String password = "ijti totw kksr dtuo"; // Replace with your password
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -102,7 +102,7 @@ public class ForgotController extends HttpServlet {
         String path = request.getRequestURI();
         String mailHost = "smtp.gmail.com"; // Or your mail server host
 
-        String from = "0939165008hoang@gmail.com"; // Replace with your email
+        String from = "bapvinh171@gmail.com"; // Replace with your email
         Properties mailProperties = System.getProperties();
         mailProperties.setProperty("mail.smtp.host", mailHost);
         mailProperties.setProperty("mail.smtp.auth", "true");
@@ -128,7 +128,7 @@ public class ForgotController extends HttpServlet {
 
                     message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
-                    message.setSubject("[ShoeShop] Yêu cầu khôi phục mật khẩu");
+                    message.setSubject("[Medicine] Yêu cầu khôi phục mật khẩu");
 
                     // Tạo chuỗi HTML chứa link để khôi phục mật khẩu
                     String resetLink = "http://localhost:8080/ForgotController/ResetPassword/" + token;
