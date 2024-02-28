@@ -66,7 +66,7 @@ public class UnitDAO {
     public UnitModel addnew(UnitModel obj){
         int count = 0;
         try {
-            PreparedStatement ps = conn.prepareStatement("Insert into Units values(?,?)");
+            PreparedStatement ps = conn.prepareStatement("Insert into Units(UnitName) VALUES(?)");
             ps.setInt(1, obj.getUnitID());
             ps.setString(2, obj.getUnitName());
             count = ps.executeUpdate();
